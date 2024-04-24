@@ -1,0 +1,139 @@
+Taller de Carros
+
+1. Reparación de Vehiculos
+2. Venta de Respuestos
+3. Prestación de Servicios Adicionales:
+   3,1. Cambio de Aceite.
+
+1. Tabla de Vehiculos
+    *id
+    *Matricula
+    *id Propietario (clave foránea que referencia el id del propietario en la tabla de Usuarios)    *Marca
+    *Modelo
+
+    Tabla de Usuarios
+    *id
+    *Cédula
+    *Edad
+    *Nombre Completo
+    *Correo
+    *Dirección
+    *telefono
+
+    Tabla Proceso
+    *id
+    *id Usuario (clave foránea que referencia el id del usuario en la tabla de Usuarios)
+    *id Vehiculo (clave foránea que referencia el id del vehículo en la tabla de Vehículos)
+    *Breve descripción del Proceso
+    *Precio de la Reparación
+    *Día ingreso del vehiculo
+    *Día retiro del vehiculo
+    *Estado del proceso (Iniciado, pendiente, completado)
+
+    Tabla vehiculos del Usuario
+    *Id
+    *id Usuario (clave foránea que referencia el id del usuario en la tabla de Usuarios)
+    *id Vehiculo (clave foránea que referencia el id del vehículo en la tabla de Vehículos)
+
+    Contexto:
+
+    Tabla de Vehículos:
+
+        Proporciona información específica sobre el vehículo que está siendo reparado, como la matrícula, la marca y el modelo.
+    Tabla de Usuarios:
+        Permite identificar al propietario del vehículo, proporcionando detalles como el nombre completo, la dirección y el teléfono, que pueden ser necesarios para la comunicación durante el proceso de reparación.
+    Tabla Proceso:
+        Almacena los detalles del proceso de reparación en sí, como la descripción del trabajo realizado, el precio, las fechas de ingreso y retiro del vehículo, y el estado del proceso.
+    Tabla vehiculos del Usuario:
+        Esta tabla intermedia relaciona los usuarios con los vehículos que poseen, lo que facilita la identificación de qué vehículos están asociados con qué propietarios.
+
+
+****IMPORTATE****
+El nombre de las tablas y de las columnas deben ir en ingles para evitar el uso de espanglish.
+
+***SQL Para las Tablas***
+
+CREATE TABLE [dbo].[Vehiculos](
+    [idVehiculos] [int] IDENTITY(1,1) NOT NULL,
+      NOT NULL,
+    [IdPropietario] [int] NOT NULL,
+      NOT NULL,
+ CONSTRAINT [PK_idVehiculos] PRIMARY KEY CLUSTERED 
+(
+    [idVehiculos] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[Usuarios](
+    [idUsuarios] [int] IDENTITY(1,1) NOT NULL,
+      NOT NULL,
+    [Edad] [int] NOT NULL,
+      NOT NULL,
+      NOT NULL,
+      NOT NULL,
+      NOT NULL,
+ CONSTRAINT [PK_idUsuarios] PRIMARY KEY CLUSTERED 
+(
+    [idUsuarios] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[Proceso](
+    [idProceso] [int] IDENTITY(1,1) NOT NULL,
+    [idUsuario] [int] NOT NULL,
+    [idVehiculo] [int] NOT NULL,
+      NOT NULL,
+    [Precio] [float] NOT NULL,
+    [DiaIngreso] date NOT NULL,
+    [DiaRetiro] date NOT NULL,
+      NOT NULL,
+ CONSTRAINT [PK_idProceso] PRIMARY KEY CLUSTERED 
+(
+    [idProceso] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[VehiculoUsuario](
+    [id] [int] IDENTITY(1,1) NOT NULL,
+    [idUsuario] [int] NOT NULL,
+    [idVehiculo] [int] NOT NULL,
+ CONSTRAINT [PK_id] PRIMARY KEY CLUSTERED 
+(
+    [id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+ALTER TABLE [dbo].[Proceso]  WITH CHECK ADD  CONSTRAINT [FK_Proceso_Usuarios] FOREIGN KEY([idUsuario])
+REFERENCES [dbo].[Usuarios] ([idUsuarios])
+GO
+
+ALTER TABLE [dbo].[Proceso] CHECK CONSTRAINT [FK_Proceso_Usuarios]
+GO
+
+ALTER TABLE [dbo].[Proceso]  WITH CHECK ADD  CONSTRAINT [FK_Proceso_Vehiculos] FOREIGN KEY([idVehiculo])
+REFERENCES [dbo].[Vehiculos] ([idVehiculos])
+GO
+
+ALTER TABLE [dbo].[Proceso] CHECK CONSTRAINT [FK_Proceso_Vehiculos]
+GO
+
+ALTER TABLE [dbo].[VehiculoUsuario]  WITH CHECK ADD  CONSTRAINT [FK_VehiculoUsuario_Usuarios] FOREIGN KEY([idUsuario])
+REFERENCES [dbo].[Usuarios] ([idUsuarios])
+GO
+
+ALTER TABLE [dbo].[VehiculoUsuario] CHECK CONSTRAINT [FK_VehiculoUsuario_Usuarios]
+GO
+
+ALTER TABLE [dbo].[VehiculoUsuario]  WITH CHECK ADD  CONSTRAINT [FK_VehiculoUsuario_Vehiculos] FOREIGN KEY([idVehiculo])
+REFERENCES [dbo].[Vehiculos] ([idVehiculos])
+GO
+
+ALTER TABLE [dbo].[VehiculoUsuario] CHECK CONSTRAINT [FK_VehiculoUsuario_Vehiculos]
+GO
+
+

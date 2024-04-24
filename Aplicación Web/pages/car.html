@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/car.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="seleccion_menu">
+                <li class="seleccion_menu--item"><a href="index.html">Reparacion</a></li>
+                <li class="seleccion_menu--item">Repuestos</li>
+                <li class="seleccion_menu--item">Servicios Adicionales</li>
+                <li class="seleccion_menu--item">Contactanos</li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+    <div class="main">
+        <form>
+            <label for="matricula">Matricula:</label>
+            <input type="text" id="matricula">
+            
+            <label for="model">Modelo:</label>
+            <input type="text" id="model">  
+
+            <label for="owner">Propietario</label>
+            <select class="select" name="owner" id="owner">
+                <option value="opcion1">Opcion 1</option>
+                <option value="opcion2">Opción 2</option>
+                <option value="opcion3">Opción 3</option>
+            </select>    
+
+            <input type="hidden" id="ID">  
+
+
+        </form>
+        <div class="buttons">
+
+
+
+            <button id="create">Crear Carro</button>
+            <button id="updte">Actualizar Carro</button><select class="select" name="updateSelect">
+                <option value="opcion1">Opcion 1</option>
+                <option value="opcion2">Opción 2</option>
+                <option value="opcion3">Opción 3</option>
+            </select>      
+            <button id="delete">Eliminar Carro</button><select class="select" name="deleteSelect">
+                <option value="opcion1">Opcion 1</option>
+                <option value="opcion2">Opción 2</option>
+                <option value="opcion3">Opción 3</option>
+            </select>    
+        </div>
+    </div>
+</main> 
+</body>
+</html>
