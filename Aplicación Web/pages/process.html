@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul class="seleccion_menu">
+                <li class="seleccion_menu--item"><a href="index.html">Reparacion</a></li>
+                <li class="seleccion_menu--item">Repuestos</li>
+                <li class="seleccion_menu--item">Servicios Adicionales</li>
+                <li class="seleccion_menu--item">Contactanos</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main">
+            <div class="form_div">
+                <form>
+                    <div>
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" id="descripcion">
+                        
+                        <label for="precio">Precio:</label>
+                        <input type="number" id="precio">  
+                        
+                        <label for="dia_ingreso">Día Ingreso:</label>
+                        <input type="date" id="dia_ingreso"> 
+                    </div>
+                
+                    <div>
+                        <label for="dia_salida">Día Salida:</label> 
+                        <input type="date" id="dia_salida"> 
+                        
+                        <label for="estado_proceso">Estado:</label>
+                        <select id="estado_proceso" style="display: block;">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                        
+                        <label for="owner">Propietario:</label>
+                        <select class="select" name="owner" id="owner" style="display: block;">
+                            <!-- Las opciones se llenarán dinámicamente desde el API -->
+                        </select>  
+
+                        <label for="car">Carro:</label>
+                        <select class="select" name="car" id="car" style="display: block;">
+                            <!-- Las opciones se llenarán dinámicamente desde el API -->
+                        </select>  
+
+                        <input type="hidden" id="processID">
+                    </div>
+                </form>
+            </div>
+            <div class="buttons">
+                <div class="button_form">
+                    <button id="create">Crear Proceso</button>
+                </div>
+                <div class="button_form">
+                    <button id="updte">Actualizar Proceso</button>
+                    <select name="updateSelect" id="updateSelect">
+                        <!-- Las opciones se llenarán dinámicamente desde el API -->
+                    </select>
+                </div>      
+                <div class="button_form">
+                    <button id="delete">Eliminar Proceso</button>
+                    <select name="deleteSelect" id="deleteSelect">
+                        <!-- Las opciones se llenarán dinámicamente desde el API -->
+                    </select>
+                </div>  
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/process.js"></script>
+</body>
+</html>

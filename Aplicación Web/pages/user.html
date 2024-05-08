@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul class="seleccion_menu">
+                <li class="seleccion_menu--item"><a href="index.html">Reparacion</a></li>
+                <li class="seleccion_menu--item">Repuestos</li>
+                <li class="seleccion_menu--item">Servicios Adicionales</li>
+                <li class="seleccion_menu--item">Contactanos</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main">
+            <div class="form_div">
+                <form>
+                    <div>
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name">
+                        
+                        <label for="identification">Cédula:</label>
+                        <input type="number" id="identification">  
+                        
+                        <label for="age">Edad:</label>
+                        <input type="number" id="age"> 
+                    </div>
+                
+                    <div>
+                        <label for="email">Correo:</label> 
+                        
+                        <input type="email" id="email"> 
+                        
+                        <label for="adress">Dirección:</label>
+                        <input type="text" id="adress"> 
+                        
+                        <label for="phoneNumber">Teléfono:</label>
+                        <input type="number" id="phoneNumber">
+                        <input type="hidden" id="userID">
+                    </div>
+                </form>
+            </div>
+            <div class="buttons">
+                <div class="button_form">
+                    <button id="create">Crear Usuario</button>
+                </div>
+                <div class="button_form">
+                    <button id="updte">Actualizar Usuario</button>
+                    <select name="updateSelect" id="updateSelect">
+                        <!-- Las opciones se llenarán dinámicamente desde el API -->
+                    </select>
+                </div>      
+                <div class="button_form">
+                    <button id="delete">Eliminar Usuario</button>
+                    <select name="deleteSelect" id="deleteSelect">
+                        <!-- Las opciones se llenarán dinámicamente desde el API -->
+                    </select>
+                </div>  
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/user.js"></script>
+</body>
+</html>
