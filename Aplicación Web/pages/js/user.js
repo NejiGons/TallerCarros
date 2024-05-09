@@ -64,7 +64,7 @@ async function Delete() {
                 $("#dvMensaje").html("¡Usuario eliminado correctamente!");
                 // Recargar la página para actualizar los selectores sin el usuario eliminado
 
-                alert("Usuario eliminado con exito")
+                alert("Datos eliminados con exito")
 
                 window.location.reload();
             } else {
